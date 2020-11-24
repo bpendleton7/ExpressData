@@ -1,0 +1,44 @@
+extends layout
+
+block accOpt
+    block accOpt
+    li
+        a(href='/login') Have An Account?
+
+
+block A
+    div(id='bodyDiv' class='body')
+        div(id='formTopTitle')
+            h(id='topTitle') Please Complete The Form Below
+        
+        div(id='contentDiv' class='contentHolder')
+
+            form(id='form' method='POST' action='/create' autocomplete='off' onsubmit= 'return validate(event)')
+                div(class='inputDiv')
+                    h5(class='inputHeadding') Username
+                    input(id='username' type='text' placeholder='username' name='username' autocomplete='off')
+                    p(id='usernameError' class='error') &nbsp;
+                    
+                div(class='inputDiv')
+                    h5(class='inputHeadding') Password
+                    input(id='password' type="password" name='password' placeholder="- - - - - - - -" autocomplete="off")
+                    p(id='passwordError' class='error') &nbsp;
+
+                div(class='inputDiv')
+                    h5(class='inputHeadding') Email
+                    input(id='email' type='text' name='email' placeholder='name@name.com' autocomplete='off')
+                    p(id='emailError' class='error') &nbsp;
+
+                div(class='inputDiv')
+                    h5(class='inputHeadding') Age
+                    input(id='age' type="text" placeholder="age" autocomplete="off")
+                    p(id='ageError' class='error') &nbsp;
+
+                div(class='username-exists')
+                    p #{UsernameExists}
+
+                div
+                    p(id='submitError' class='error') &nbsp;
+                    input(id='submitBtn' type='submit' value='REGISTER')
+
+                a(id='loginLink' href='/login') Wait I Have An Account!
