@@ -77,7 +77,7 @@ const validate = evt => {
             if (age_pattern.test(age.value)
                 && email_pattern.test(email.value)
                 && username_pattern.test(username.value)
-                && password_pattern.test(password.value) {
+                && password_pattern.test(password.value)) {
                 console.log("Form is clean.")
                 //Storing data
                 _username = username.value;
