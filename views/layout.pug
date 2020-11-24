@@ -1,0 +1,27 @@
+doctype
+html
+
+    head
+        <meta name="viewport" content="width=device-width">
+        title=title
+        link(rel='icon' href= icon_href)
+        link(href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@1,900&display=swap" rel="stylesheet")
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(href='/style.css' rel='stylesheet')
+        link(href=css_href rel='stylesheet')
+
+    header
+        a(href='/')
+            h1 
+                span Vinci
+                    span(id='lastVisit').
+                        &nbsp; #{lastVisitedTime}
+        nav
+            ul
+                li
+                    a(href='/') Home
+                block accOpt
+                
+    body
+        block A
+        script(src=script_src)
