@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb+srv://user:pass@cluster0.zylfw.mongodb.net/Users?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://user:pass@cluster0.zylfw.mongodb.net/clients?retryWrites=true&w=majority', {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
@@ -15,11 +15,13 @@ mdb.once('open', callback => {
 });
 
 let userSchema = mongoose.Schema({
-    firstName: String,
-    lastName: String,
     username: String,
     password: String,
     email: String,
+    age: Number,
+    question1: Array,
+    question2: Array,
+    question3: Array
 });
 
 let User = mongoose.model('User_Collection', userSchema);
