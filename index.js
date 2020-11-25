@@ -59,4 +59,4 @@ app.get('/logout', (req, res) => {
 });
 
 // Servers listening port
-server.listen(3000);
+app.listen(3000);

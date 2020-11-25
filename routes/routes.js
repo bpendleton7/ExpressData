@@ -26,6 +26,34 @@ let userSchema = mongoose.Schema({
 
 let User = mongoose.model('User_Collection', userSchema);
 
+exports.index = (req, res) => {
+    let today = new Date();
+    let date = `${today.getMonth()}-${today.getDate()}-${today.getFullYear()}     ${(today.getHours() + 24) % 12 || 12}:${today.getMinutes()}:${today.getSeconds()}`
+
+    let displayDate = '';
+    if (req.cookies.lastVisit) {
+        displayDate = `Last Visited: ${req.cookies.lastVisit}`;
+    } else {
+        displayDate = `Welcome!`
+    }
+
+    //// TEST - Logging to console to see print all users in database
+    User.find((err, user) => {
+        if (err) return console.error(err);
+        console.log(user);
+    });
+    //User.collection.remove();
+
+    res.cookie('lastVisit', date, { maxAge: 999999999999 });
+
+    res.render('index', {
+        title: 'Home',
+        lastVisitedTime: displayDate
+    });
+
+
+}
+
 // LOGIN page
 exports.login = (req, res) => {
     res.render('login', {
