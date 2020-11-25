@@ -1,0 +1,1 @@
+"C:\Program Files\MongoDB\Server\4.2\bin\mongod.exe" --dbpath "C:\Users\Carter Wilde\OneDrive - Neumont College of Computer Science\Documents\ClassWork\Fall2020\InterativeWeb\ExpressData\data" 

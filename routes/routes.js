@@ -14,17 +14,22 @@ mdb.once('open', callback => {
 
 });
 
-let userSchema = mongoose.Schema({
+/**
+ * correct is the index of the correct answer
+ * @typedef {{question: string, responses: string[], correct: number}} Question
+ */
+
+const scheme = {
     username: String,
     password: String,
     email: String,
     age: Number,
-    question1: Array,
-    question2: Array,
-    question3: Array
-});
+    questions: []
+};
 
-let User = mongoose.model('User_Collection', userSchema);
+let userSchema = new mongoose.Schema(scheme);
+
+let User = mongoose.model('users', userSchema);
 
 exports.index = (req, res) => {
     let today = new Date();
@@ -50,8 +55,6 @@ exports.index = (req, res) => {
         title: 'Home',
         lastVisitedTime: displayDate
     });
-
-
 }
 
 // LOGIN page
@@ -78,7 +81,8 @@ exports.verifyLogin = async (req, res) => {
             // once user and pass are verified then we create a session with any key:value pair we want, which we can check for later
             req.session.user = {
                 isAuthenticated: true,
-                username: user.username
+                username: user.username,
+                questions: user.questions
             }
             console.log(`User: "${req.body.username}" was authenticated.`);
             //Once logged in redirect to this page
@@ -115,6 +119,7 @@ exports.createUser = async (req, res) => {
             username: req.body.username,
             password: hash,
             email: req.body.email,
+            questions: req.body.questions
         });
         user.save((err, user) => {
             if (err) return console.error(err);
