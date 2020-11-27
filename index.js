@@ -1,6 +1,6 @@
 // Required packages
 const express = require('express');
-const expressSession = require('express-session');
+const session = require('express-session');
 const pug = require('pug');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -18,6 +18,16 @@ app.use((req, res, next) => {
 // Things the site is using
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
+app.use(session({secret: "WeAl6S6aXZN2ffnIf1hWYw==", saveUninitialized: true, resave: true, unset: 'destroy'}));
+app.use((req, res, next) => {
+    if(req.session.user) {
+            req.session.user.isLoggedIn = !(!req.session.user.username)
+    } else {
+        req.session.user = {};
+        req.session.user.isLoggedIn = false;
+    }
+    next();
+});
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(cookieParser('This is my passphrase'));
 
@@ -28,19 +38,11 @@ const urlencodedParser = bodyParser.urlencoded({
 // If user is authenticated it will proceeds to the requested path else redirects to home page
 const checkAuth = (req, res, next) => {
     if (req.session.user && req.session.user.isAuthenticated) {
-
         next();
     } else {
         res.redirect('/login')
     }
 }
-
-app.use(expressSession({
-    secret: 'whatever',
-    saveUninitialized: true,
-    resave: true
-}));
-
 
 // PUBLIC PAGES - Needs no authentication
 app.get('/', routes.index);
@@ -53,10 +55,10 @@ app.get('/logout', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.redirect('/');
+            res.clearCookie('connect.sid').redirect('/');
         }
     })
 });
 
 // Servers listening port
-app.listen(3000);
+app.listen(3000, console.log("Listening at http://localhost:3000"));

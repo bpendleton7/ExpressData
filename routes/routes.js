@@ -42,18 +42,12 @@ exports.index = (req, res) => {
         displayDate = `Welcome!`
     }
 
-    //// TEST - Logging to console to see print all users in database
-    User.find((err, user) => {
-        if (err) return console.error(err);
-        console.log(user);
-    });
-    //User.collection.remove();
-
     res.cookie('lastVisit', date, { maxAge: 999999999999 });
-
     res.render('index', {
         title: 'Home',
-        lastVisitedTime: displayDate
+        lastVisitedTime: displayDate,
+        isLoggedIn: req.session.isLoggedIn,
+        user: req.session.user
     });
 }
 

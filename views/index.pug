@@ -2,10 +2,14 @@ extends layout
 
 block accOpt
     li
-        a(href='/login') Log In
-        ul(id='manyItems')
-            li
-                a(href='/create') Register
+        if !user.isLoggedIn
+            a(href='/login') Log In
+            ul(id='manyItems')
+                li
+                    a(href='/create') Register
+        else
+            form(method="GET", action="/logout")
+                input(type="submit", value="Log Out")
 
 
 block A
