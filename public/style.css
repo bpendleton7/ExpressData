@@ -7,7 +7,7 @@ body, html{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    font-family: 'Kufam', cursive;
+    font-family: 'Piedra', cursive;
 }
 
 ::placeholder{
@@ -19,7 +19,7 @@ body, html{
 header{
     width: 100%;
     height: 7.5%;
-    background-color: #353738;
+    background-color: #36453B;
 }
 
 h1{
@@ -28,12 +28,15 @@ h1{
     float: left;
     margin-left: 2%;
     margin-top: 10px;
-    /* font family here */
-    color: rgb(255, 255, 255);
+    color: #C2C1A5;
 }
 
-span{
-    color: #ffc977;
+#lastVisit{
+    color: #C2C1A5;
+}
+
+#topTitle{
+    color: #36453B;
 }
 
 ul{
@@ -50,9 +53,8 @@ li{
 
 a{
     text-align: center;
-    color: #ffffff;
+    color: #C2C1A5;
     text-decoration: none;
-    /* font family here */
     font-size: 18px;
 }
 

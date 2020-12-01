@@ -11,9 +11,9 @@ body{
     margin-top: 3%;
     height: 69%;
     width: 30%;
-    background: rgba(139, 134, 134, 0.2);
+    background: #F5F9E9;
     backdrop-filter: blur(8px);
-    border: 4px solid #f8990a;
+    border: 4px solid #515751;
     border-radius: 15px;
     padding-top: 40px;
     text-align: center;
@@ -23,18 +23,18 @@ body{
     width: 100%;
     text-align: center;
     margin: auto;
-    color: #f8990a;
+    color: #596869;
 }
 #usrTitle{
     padding-top: 10%;
-    color: white;
+    color: #596869;
     text-transform: uppercase;
     font-weight: 900;
     font-size: 20px;
 }
 #pwdTitle{
     margin-top: 10%;
-    color: white;
+    color: #596869;
     text-transform: uppercase;
     font-weight: 900;
     font-size: 20px;
@@ -66,7 +66,7 @@ p{
 
 #submitBtn{
     margin-top: 9%;
-    background-color: rgb(248, 153, 10);
+    background-color: #596869;
     color: rgb(255, 255, 255);
     font-size: 16px;
     font-weight: 900;
@@ -76,7 +76,7 @@ p{
 
 #createLink{
     
-    color: rgb(255, 196, 0);
+    color: #596869;
     
 }
 
