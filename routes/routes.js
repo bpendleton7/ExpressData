@@ -80,7 +80,7 @@ exports.verifyLogin = async (req, res) => {
             }
             console.log(`User: "${req.body.username}" was authenticated.`);
             //Once logged in redirect to this page
-            res.redirect('/play');
+            res.redirect('/');
         } else {
             res.redirect('/login');
             console.log(`*Failed to log in, user "${req.body.username}" entered the wrong password.`);
@@ -127,6 +127,19 @@ exports.create = (req, res) => {
           ]
     })
 }
+/**
+ * @param {import("express").Request} req
+ * @param {import("express").Response} res
+ */
+exports.updateUser = async (req, res) => {
+    console.log(req.session.user);
+    User.updateOne({_id: req.body.username}, {...req.body}, (err, raw) => {
+        if(err) {
+            console.error(err);
+        }
+        res.sendStatus(200);
+    })
+}
 
 // Creating user in the database
 exports.createUser = async (req, res) => {
@@ -142,7 +155,7 @@ exports.createUser = async (req, res) => {
             question.answer = req.body['question'+i];
             questions.push(question);
         }
-        console.log(questions);
+
         let user = new User({
             firstName: req.body.fname,
             lastName: req.body.lname,
