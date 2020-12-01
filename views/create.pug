@@ -36,7 +36,14 @@ block A
 
                 div(class='username-exists')
                     p #{UsernameExists}
-
+                div.questions
+                    each question, index in questions
+                        div
+                            p #{question.question}
+                            each answer, aindex in question.answers
+                                input(type="radio", id="question"+index+"-answer"+aindex, name="question"+index value=answer)
+                                label(for="question"+index+"-answer"+aindex) #{answer}
+                        input(type="text", name="obj-question"+index, value=JSON.stringify(question), readonly, hidden)
                 div
                     p(id='submitError' class='error') &nbsp;
                     input(id='submitBtn' type='submit' value='REGISTER')

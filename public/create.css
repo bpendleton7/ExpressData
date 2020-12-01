@@ -78,6 +78,11 @@ input{
     
 }
 
+input[type="radio"] {
+    height: inherit;
+    width: inherit;
+}
+
 input:hover{
     background-color: rgb(240, 240, 240);
 }
