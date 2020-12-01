@@ -80,7 +80,7 @@ exports.verifyLogin = async (req, res) => {
             }
             console.log(`User: "${req.body.username}" was authenticated.`);
             //Once logged in redirect to this page
-            res.redirect('/play');
+            res.redirect('/');
         } else {
             res.redirect('/login');
             console.log(`*Failed to log in, user "${req.body.username}" entered the wrong password.`);
@@ -95,7 +95,49 @@ exports.create = (req, res) => {
         title: 'Create Account',
         icon_href: '/images/create.png',
         css_href: '/create.css',
-        script_src: 'create.js'
+        script_src: 'create.js',
+        questions: [
+            {
+              "question": "Which of the following is the oldest of these computers by release date?",
+              "answers": [
+                "TRS-80",
+                "Commodore 64",
+                "ZX Spectrum",
+                "Apple 3"
+              ]
+            },
+            {
+              "question": "Who became Prime Minister of the United Kingdom in July 2016?",
+              "answers": [
+                "Theresa May",
+                "Boris Johnson",
+                "David Cameron",
+                "Tony Blair"
+              ]
+            },
+            {
+              "question": "Who created the \"Metal Gear\" Series?",
+              "answers": [
+                "Hideo Kojima",
+                "Hiroshi Yamauchi",
+                "Shigeru Miyamoto",
+                "Gunpei Yokoi"
+              ]
+            }
+          ]
+    })
+}
+/**
+ * @param {import("express").Request} req
+ * @param {import("express").Response} res
+ */
+exports.updateUser = async (req, res) => {
+    console.log(req.session.user);
+    User.updateOne({_id: req.body.username}, {...req.body}, (err, raw) => {
+        if(err) {
+            console.error(err);
+        }
+        res.sendStatus(200);
     })
 }
 
@@ -107,13 +149,20 @@ exports.createUser = async (req, res) => {
 
         let salt = bcrypt.genSaltSync(10);
         let hash = bcrypt.hashSync(req.body.password, salt);
+        let questions = [];
+        for(let i = 0; i < 3; i++) {
+            let question = JSON.parse(req.body['obj-question'+i]);
+            question.answer = req.body['question'+i];
+            questions.push(question);
+        }
+
         let user = new User({
             firstName: req.body.fname,
             lastName: req.body.lname,
             username: req.body.username,
             password: hash,
             email: req.body.email,
-            questions: req.body.questions
+            questions: questions
         });
         user.save((err, user) => {
             if (err) return console.error(err);
