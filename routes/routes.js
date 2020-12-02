@@ -3,7 +3,12 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/data', {
+// mongoose.connect('mongodb://localhost/data', {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true
+// });
+
+mongoose.connect('mongodb+srv://user:pass@cluster0.zylfw.mongodb.net/users?retryWrites=true&w=majority', {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
@@ -43,6 +48,7 @@ exports.index = (req, res) => {
     }
 
     res.cookie('lastVisit', date, { maxAge: 999999999999 });
+    console.log(JSON.stringify(req.session.user));
     res.render('index', {
         title: 'Home',
         lastVisitedTime: displayDate,
@@ -140,14 +146,22 @@ exports.updateUser = async (req, res) => {
         question.answer = req.body['question'+i];
         questionss.push(question);
     }
-    User.updateOne({username: req.session.user.username}, {
-        username: req.body.name,
-        questions: questionss,
-        age: req.body.age,
-        email: req.body.email,
-        password: req.body.pass
-    });
-    res.redirect('/')
+    console.log("usah: " + req.session.user.username);
+    let userr = await User.findOne({ username: req.session.user.username });
+    userr.username = req.body.name;
+    userr.questions = questionss;
+    userr.age = req.body.age;
+    userr.email = req.body.email;
+    userr.password = hash;
+    userr.save();
+    // User.updateOne({username: req.session.user.username}, {
+    //     username: req.body.name,
+    //     questions: questionss,
+    //     age: req.body.age,
+    //     email: req.body.email,
+    //     password: hash
+    // });
+    res.redirect('/update')
 }
 
 //Update page

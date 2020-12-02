@@ -54,11 +54,12 @@ app.get('/update', routes.update);
 app.post('/update', urlencodedParser, routes.updateUser);
 app.get('/logout', (req, res) => {
     req.session.destroy((err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.clearCookie('connect.sid').redirect('/');
-        }
+        // if (err) {
+        //     console.log(err);
+        // } else {
+        //     res.clearCookie('connect.sid').redirect('/');
+        // }
+        res.redirect('/');
     })
 });
 
