@@ -3,17 +3,17 @@ extends layout
 block accOpt
     block accOpt
     li
-        a(href='/login') Have An Account?
+        a(href='/') Logout
 
 
 block A
     div(id='bodyDiv' class='body')
         div(id='formTopTitle')
-            h(id='topTitle') Please Complete The Form Below
+            h(id='topTitle') Update Form Below To Change User Info
         
         div(id='contentDiv' class='contentHolder')
 
-            form(id='form' method='POST' action='/create' autocomplete='off' onsubmit= 'return validate(event)')
+            form(id='form' method='POST' action='/update' autocomplete='off' onsubmit= 'return validate(event)')
                 div(class='inputDiv')
                     h5(class='inputHeadding') Username
                     input(id='username' type='text' placeholder='username' name='username' autocomplete='off')
@@ -39,6 +39,4 @@ block A
 
                 div
                     p(id='submitError' class='error') &nbsp;
-                    input(id='submitBtn' type='submit' value='REGISTER')
-
-                a(id='loginLink' href='/login') Wait I Have An Account!
+                    input(id='submitBtn' type='submit' value='UPDATE')

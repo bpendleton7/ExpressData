@@ -80,7 +80,7 @@ exports.verifyLogin = async (req, res) => {
             }
             console.log(`User: "${req.body.username}" was authenticated.`);
             //Once logged in redirect to this page
-            res.redirect('/');
+            res.redirect('/update');
         } else {
             res.redirect('/login');
             console.log(`*Failed to log in, user "${req.body.username}" entered the wrong password.`);
@@ -140,6 +140,15 @@ exports.updateUser = async (req, res) => {
         res.sendStatus(200);
     })
 }
+
+//Update page
+exports.update = (req, res) => {
+    res.render('update', {
+        title: 'Update',
+        icon_href: '/images/update.png',
+        css_href: '/update.css'
+    });
+};
 
 // Creating user in the database
 exports.createUser = async (req, res) => {
