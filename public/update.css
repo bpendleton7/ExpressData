@@ -156,3 +156,8 @@ input:hover{
     margin-top: 0;
     padding-top: 0;
 }
+
+input[type="radio"] {
+    height: inherit;
+    width: inherit;
+}

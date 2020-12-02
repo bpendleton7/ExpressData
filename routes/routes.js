@@ -132,13 +132,15 @@ exports.create = (req, res) => {
  * @param {import("express").Response} res
  */
 exports.updateUser = async (req, res) => {
-    console.log(req.session.user);
-    User.updateOne({_id: req.body.username}, {...req.body}, (err, raw) => {
-        if(err) {
-            console.error(err);
-        }
-        res.sendStatus(200);
-    })
+    console.log(req.session);
+    User.updateOne({username: req.session.user.username}, {
+        username: req.body.name,
+        questions: req.body.questions,
+        age: req.body.age,
+        email: req.body.email,
+        password: req.body.password
+    });
+    res.redirect('/')
 }
 
 //Update page
@@ -146,7 +148,36 @@ exports.update = (req, res) => {
     res.render('update', {
         title: 'Update',
         icon_href: '/images/update.png',
-        css_href: '/update.css'
+        css_href: '/update.css',
+        questions: [
+            {
+              "question": "Which of the following is the oldest of these computers by release date?",
+              "answers": [
+                "TRS-80",
+                "Commodore 64",
+                "ZX Spectrum",
+                "Apple 3"
+              ]
+            },
+            {
+              "question": "Who became Prime Minister of the United Kingdom in July 2016?",
+              "answers": [
+                "Theresa May",
+                "Boris Johnson",
+                "David Cameron",
+                "Tony Blair"
+              ]
+            },
+            {
+              "question": "Who created the \"Metal Gear\" Series?",
+              "answers": [
+                "Hideo Kojima",
+                "Hiroshi Yamauchi",
+                "Shigeru Miyamoto",
+                "Gunpei Yokoi"
+              ]
+            }
+          ]
     });
 };
 
@@ -165,12 +196,12 @@ exports.createUser = async (req, res) => {
             questions.push(question);
         }
 
+        console.log(req.body);
         let user = new User({
-            firstName: req.body.fname,
-            lastName: req.body.lname,
             username: req.body.username,
             password: hash,
             email: req.body.email,
+            age: req.body.age,
             questions: questions
         });
         user.save((err, user) => {

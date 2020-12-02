@@ -16,12 +16,12 @@ block A
             form(id='form' method='POST' action='/update' autocomplete='off' onsubmit= 'return validate(event)')
                 div(class='inputDiv')
                     h5(class='inputHeadding') Username
-                    input(id='username' type='text' placeholder='username' name='username' autocomplete='off')
+                    input(id='username' type='text' placeholder='username' name='name' autocomplete='off')
                     p(id='usernameError' class='error') &nbsp;
                     
                 div(class='inputDiv')
                     h5(class='inputHeadding') Password
-                    input(id='password' type="password" name='password' placeholder="- - - - - - - -" autocomplete="off")
+                    input(id='password' type="password" name='pass' placeholder="- - - - - - - -" autocomplete="off")
                     p(id='passwordError' class='error') &nbsp;
 
                 div(class='inputDiv')
@@ -31,12 +31,21 @@ block A
 
                 div(class='inputDiv')
                     h5(class='inputHeadding') Age
-                    input(id='age' type="text" placeholder="age" autocomplete="off")
+                    input(id='age' type="text" name='age' placeholder="age" autocomplete="off")
                     p(id='ageError' class='error') &nbsp;
 
                 div(class='username-exists')
                     p #{UsernameExists}
 
+                div.questions
+                    each question, index in questions
+                        div
+                            p #{question.question}
+                            each answer, aindex in question.answers
+                                input(type="radio", id="question"+index+"-answer"+aindex, name="question"+index value=answer)
+                                label(for="question"+index+"-answer"+aindex) #{answer}
+                        input(type="text", name="obj-question"+index, value=JSON.stringify(question), readonly, hidden)
+                        
                 div
                     p(id='submitError' class='error') &nbsp;
                     input(id='submitBtn' type='submit' value='UPDATE')
