@@ -20,24 +20,11 @@ body{
 
 #bodyDiv{
     margin: auto;
-
-    margin: auto;
     margin-top: 4%;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
-    border: 4px solid rgba(255, 255, 255, 0.3);
     border-radius: 20px;
-    
     width: 50%;
     padding-bottom: 1%;
-    
     text-align:center;
-    
-}
-
-.inputDiv{
-    width: 50%;
-    float: left;
 }
 
 #submitError{
@@ -45,24 +32,14 @@ body{
     padding-bottom: 1%;
 }
 
-#formTopTitle{
-    margin: 0;
-    padding-top: 1%;
-    padding-bottom: 3%;
-  
-    color: rgb(255, 255, 255);
-
-}
-
 #topTitle{
-    /* text-decoration: underline; */
+    text-decoration: underline;
     font-weight: 900;
     margin:0px; 
     padding:30px; 
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     text-transform: uppercase;
-
     width: 25%;
     text-align: center;
     margin: auto;
@@ -76,12 +53,16 @@ input{
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     width: 90%;
-    height: 15%;
+    height: 5%;
     text-align: center;
     padding:4px;
     font-size: 18px;
     outline: none;
-    
+}
+
+input[type="radio"] {
+    height: inherit;
+    width: inherit;
 }
 
 input:hover{
@@ -90,7 +71,7 @@ input:hover{
 
 .inputHeadding{
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
     padding-bottom: 0px;
     font-weight: 900;
     text-transform: uppercase;
@@ -99,7 +80,7 @@ input:hover{
 }
 .error{
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
     padding-bottom: 5%;
     font-size: 15px;
     font-weight: 800;
@@ -117,7 +98,6 @@ input:hover{
     color: rgb(255, 255, 255);
     font-weight: 900;
     font-size: 20px;
-
     background-color: #596869;
     color: rgb(255, 255, 255);
     font-size: 16px;
@@ -128,11 +108,6 @@ input:hover{
 #submitBtn:hover{
     cursor: pointer;
     opacity: .7;
-}
-
-#passwordError{
-    margin-bottom: 0;
-    padding-bottom: 0;
 }
 
 #loginLink{

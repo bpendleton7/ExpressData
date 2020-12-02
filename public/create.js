@@ -13,7 +13,7 @@ const passwordError = document.getElementById('passwordError');
 const submitError = document.getElementById('submitError');
 
 // Patterns
-const age_pattern = /^[0-9]$/i;
+const age_pattern = /\d+/;
 const username_pattern = /^[a-zA-Z]{4,}$/i;
 const email_pattern = /\w+@\w{2,}\.\w{2,}/i;
 const password_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W)(?!.*[-_=+|\\].*).{8,}$/;
