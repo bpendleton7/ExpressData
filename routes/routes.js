@@ -206,7 +206,7 @@ exports.createUser = async (req, res) => {
         });
         user.save((err, user) => {
             if (err) return console.error(err);
-            console.log(user.firstName + ' added');
+            console.log(user.username + ' added');
         });
         res.redirect('/login');
     } else {
