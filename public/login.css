@@ -1,12 +1,11 @@
-body{
+body {
     background: white;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-
-.loginbox{
+.loginbox {
     margin: auto;
     margin-top: 3%;
     height: 69%;
@@ -19,20 +18,22 @@ body{
     text-align: center;
 }   
 
-#loginTitle{
+#loginTitle {
     width: 100%;
     text-align: center;
     margin: auto;
     color: #596869;
 }
-#usrTitle{
+
+#usrTitle {
     padding-top: 10%;
     color: #596869;
     text-transform: uppercase;
     font-weight: 900;
     font-size: 20px;
 }
-#pwdTitle{
+
+#pwdTitle {
     margin-top: 10%;
     color: #596869;
     text-transform: uppercase;
@@ -40,14 +41,14 @@ body{
     font-size: 20px;
 }
 
-form{
+form {
     margin: auto;
     height: 100%;
     margin: 0;
     padding-top: 5%;
 }
 
-input{
+input {
     width: 70%;
     padding:3%;
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -57,14 +58,14 @@ input{
     text-align: center;
 }
 
-p{
+p {
     margin-bottom: 0;
     padding-bottom: 1%;
     font-size: 22px;
     font-weight: 900;
 }
 
-#submitBtn{
+#submitBtn {
     margin-top: 9%;
     background-color: #596869;
     color: rgb(255, 255, 255);
@@ -74,55 +75,54 @@ p{
     height: 10%;
 }
 
-#createLink{
-    
+#createLink {
     color: #596869;
-    
 }
 
-
-input:hover{
+input:hover {
     background-color: rgb(233, 233, 233);
     opacity: .7;
 }
 
-#createLink:hover, #submitBtn:hover{
+#createLink:hover, #submitBtn:hover {
     cursor: pointer;
-    color: chocolate;
+    color: #36453B;
     transition: .5s;
 }
 
-@media all and (max-width: 850px){
-    .loginbox{
+@media all and (max-width: 850px) {
+    .loginbox {
         margin: auto;
         margin-top: 3%;
         height: 69%;
         width: 50%;
-        background: rgba(139, 134, 134, 0.2);
+        background: #F5F9E9;
         backdrop-filter: blur(8px);
-        border: 4px solid #f8990a;
+        border: 4px solid #515751;
         border-radius: 15px;
         padding-top: 40px;
         text-align: center;
     }   
 
-    #loginTitle{
+    #loginTitle {
         width: 100%;
         text-align: center;
-        margin-bottom: 13%;
-        color: #f8990a;
+        margin: auto;
+        color: #596869;
     }
-    #usrTitle{
+
+    #usrTitle {
         margin-top: 5%;
         padding-top: 10%;
-        color: white;
+        color: #596869;
         text-transform: uppercase;
         font-weight: 900;
         font-size: 20px;
     }
-    #pwdTitle{
+    
+    #pwdTitle {
         margin-top: 10%;
-        color: white;
+        color: #596869;
         text-transform: uppercase;
         font-weight: 900;
         font-size: 20px;

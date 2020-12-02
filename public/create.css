@@ -1,11 +1,11 @@
-body{
+body {
     background: white;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.contentHolder{
+.contentHolder {
     text-align: center;
     margin: auto;
     margin-top: 3%;
@@ -18,7 +18,7 @@ body{
     height: 100%;
 }
 
-#bodyDiv{
+#bodyDiv {
     margin: auto;
     margin-top: 4%;
     border-radius: 20px;
@@ -27,12 +27,12 @@ body{
     text-align:center;
 }
 
-#submitError{
+#submitError {
     margin: 0; 
     padding-bottom: 1%;
 }
 
-#topTitle{
+#topTitle {
     text-decoration: underline;
     font-weight: 900;
     margin:0px; 
@@ -47,7 +47,7 @@ body{
     font-size: 19px;
 }
 
-input{
+input {
     margin-top: 0;
     padding-top: 0;
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -65,11 +65,11 @@ input[type="radio"] {
     width: inherit;
 }
 
-input:hover{
+input:hover {
     background-color: rgb(240, 240, 240);
 }
 
-.inputHeadding{
+.inputHeadding {
     margin-top: 5px;
     margin-bottom: 1px;
     padding-bottom: 0px;
@@ -79,7 +79,7 @@ input:hover{
     color: #000000;
 }
 
-.error{
+.error {
     margin-top: 5px;
     margin-bottom: 1px;
     padding-bottom: 5%;
@@ -90,7 +90,7 @@ input:hover{
     user-select: none;
 }
 
-#submitBtn{
+#submitBtn {
     width: 25%;
     height: 20%;
     margin-bottom: 1%;
@@ -106,17 +106,17 @@ input:hover{
     height: 10%;
 }
 
-#submitBtn:hover{
+#submitBtn:hover {
     cursor: pointer;
     opacity: .7;
 }
 
-#loginLink{
+#loginLink {
     color: #596869;
     padding-bottom: 5%;
 }
 
-#loginLink:hover{
+#loginLink:hover {
     cursor: pointer;
     color: #36453B;
     transition: .5s;
