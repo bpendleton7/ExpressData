@@ -132,13 +132,20 @@ exports.create = (req, res) => {
  * @param {import("express").Response} res
  */
 exports.updateUser = async (req, res) => {
-    console.log(req.session);
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(req.body.pass, salt);
+    let questionss = [];
+    for(let i = 0; i < 3; i++) {
+        let question = JSON.parse(req.body['obj-question'+i]);
+        question.answer = req.body['question'+i];
+        questionss.push(question);
+    }
     User.updateOne({username: req.session.user.username}, {
         username: req.body.name,
-        questions: req.body.questions,
+        questions: questionss,
         age: req.body.age,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.pass
     });
     res.redirect('/')
 }
