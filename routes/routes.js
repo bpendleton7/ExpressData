@@ -68,8 +68,6 @@ exports.login = (req, res) => {
 
 // Check user info against the database
 exports.verifyLogin = async (req, res) => {
-    // ******* THIS IS WHERE WE SHOULD CHECK AGAINST THE DATABASE TO CHECK IF THE USER EXISTS AND THE PASSWORD MATCHES *******
-    // instead of req.body.user === 'user' &&...     it would be some thing like req.body.user exists in the database && the password matches that is in the database
 
     let user = await User.findOne({ username: req.body.username });
     if (user == null) {
