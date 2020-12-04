@@ -62,6 +62,7 @@ app.get('/logout', (req, res) => {
         res.redirect('/');
     })
 });
+app.get('/api', routes.api);
 
 // Servers listening port
 app.listen(3000, console.log("Listening at http://localhost:3000"));

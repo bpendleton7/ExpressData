@@ -239,3 +239,11 @@ exports.createUser = async (req, res) => {
         console.log(`*Username: "${req.body.username}" already exists.*`);
     }
 };
+
+// API Page
+exports.api = (req, res) => {
+    res.render('api', {
+        title: 'API',
+        css_href: '/api.css'
+    });
+};
