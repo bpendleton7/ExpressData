@@ -1,6 +1,7 @@
 const path = require('path');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const { query } = require('express');
 mongoose.Promise = global.Promise;
 
 // mongoose.connect('mongodb://localhost/data', {
@@ -242,8 +243,38 @@ exports.createUser = async (req, res) => {
 
 // API Page
 exports.api = (req, res) => {
-    res.render('api', {
-        title: 'API',
-        css_href: '/api.css'
-    });
+    let questions = {
+        "Which of the following is the oldest of these computers by release date?":{
+           "TRS-80":0,
+           "Commodore 64":0,
+           "ZX Spectrum":0,
+           "Apple 3":0
+        },
+        "Who became Prime Minister of the United Kingdom in July 2016?":{
+           "Theresa May":0,
+           "Boris Johnson":0,
+           "David Cameron":0,
+           "Tony Blair":0
+        },
+        "Who created the \"Metal Gear\" Series?":{
+           "Hideo Kojima":0,
+           "Hiroshi Yamauchi":0,
+           "Shigeru Miyamoto":0,
+           "Gunpei Yokoi":0
+        }
+     }
+    let user = User.find({}, "questions").then(object => {
+        console.log(object);
+        object.forEach(questionsArray => {
+            questionsArray.questions.forEach(answeredQuestion => {
+                questions[`${answeredQuestion.question}`][`${answeredQuestion.answer}`] ++
+            })
+        })
+        res.json(questions);
+    })
+    
+    // res.render('api', {
+    //     title: 'API',
+    //     css_href: '/api.css'
+    // });
 };
