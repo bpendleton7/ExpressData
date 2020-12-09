@@ -115,8 +115,8 @@ fetch ('/api').then(res=>res.json()).then(data=>{
             canvas:myCanvas,
             seriesName:"Question 1                         Question 2                         Question 3",
             padding:25,
-            gridScale:5,
-            gridColor:"#eeeeee",
+            gridScale:1,
+            gridColor:"#000000",
             data:questions,
             colors:["#36453B","#C2C1A5"]
         }
