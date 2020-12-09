@@ -278,3 +278,9 @@ exports.api = (req, res) => {
     //     css_href: '/api.css'
     // });
 };
+exports.apiAU = (req,res) => {
+    res.render('api', {
+             title: 'API',
+            css_href: '/api.css'
+         });
+}
